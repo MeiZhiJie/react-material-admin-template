@@ -1,14 +1,24 @@
-import React, {PropTypes} from 'react';
+//import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
+/*
 import Paper from 'material-ui/Paper';
 import {white, purple600, purple500} from 'material-ui/styles/colors';
+*/
+import { Paper } from '@material-ui/core';
+import { common, purple } from '@material-ui/core/colors';
+
 import {LineChart, Line, ResponsiveContainer} from 'recharts';
-import {typography} from 'material-ui/styles';
+
+//import {typography} from 'material-ui/styles';
+//import { typography } from '@material-ui/core/styles';
 
 const NewOrders = (props) => {
 
   const styles = {
     paper: {
-      backgroundColor: purple500,
+      backgroundColor: purple[500],
       height: 150
     },
     div: {
@@ -17,9 +27,9 @@ const NewOrders = (props) => {
     },
     header: {
       fontSize: 24,
-      fontWeight: typography.fontWeightLight,
-      color: white,
-      backgroundColor: purple600,
+//      fontWeight: typography.fontWeightLight,
+      color: common["white"],
+      backgroundColor: purple[600],
       padding: 10,
     }
   };
@@ -41,5 +51,6 @@ const NewOrders = (props) => {
 NewOrders.propTypes = {
   data: PropTypes.array
 };
+
 
 export default NewOrders;

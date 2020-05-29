@@ -1,4 +1,5 @@
 import React from 'react';
+/*
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -10,6 +11,17 @@ import Help from 'material-ui/svg-icons/action/help';
 import TextField from 'material-ui/TextField';
 import {Link} from 'react-router';
 import ThemeDefault from '../theme-default';
+*/
+
+import { ThemeProvider } from '@material-ui/core/styles';
+import { Paper, Button, Checkbox, TextField, FormControlLabel } from '@material-ui/core';
+import { PersonAdd, Help } from '@material-ui/icons';
+import { grey, common } from '@material-ui/core/colors';
+import ThemeDefault from '../theme-default';
+import { Link } from 'react-router-dom';
+
+
+
 
 const LoginPage = () => {
 
@@ -33,7 +45,7 @@ const LoginPage = () => {
       padding: 10
     },
     flatButton: {
-      color: grey500
+      color: grey[500]
     },
     checkRemember: {
       style: {
@@ -42,12 +54,12 @@ const LoginPage = () => {
         paddingTop: 5
       },
       labelStyle: {
-        color: grey500
+        color: grey[500]
       },
       iconStyle: {
-        color: grey500,
-        borderColor: grey500,
-        fill: grey500
+        color: grey[500],
+        borderColor: grey[500],
+        fill: grey[500]
       }
     },
     loginBtn: {
@@ -55,7 +67,7 @@ const LoginPage = () => {
     },
     btn: {
       background: '#4f81e9',
-      color: white,
+      color: common["white"],
       padding: 7,
       borderRadius: 2,
       margin: 2,
@@ -73,7 +85,7 @@ const LoginPage = () => {
   };
 
   return (
-    <MuiThemeProvider muiTheme={ThemeDefault}>
+//    <ThemeProvider theme={ThemeDefault}>
       <div>
         <div style={styles.loginContainer}>
 
@@ -81,48 +93,67 @@ const LoginPage = () => {
 
             <form>
               <TextField
-                hintText="E-mail"
-                floatingLabelText="E-mail"
+                label="E-mail"
                 fullWidth={true}
               />
               <TextField
-                hintText="Password"
-                floatingLabelText="Password"
+                label="Password"
                 fullWidth={true}
                 type="password"
               />
 
-              <div>
-                <Checkbox
+              <div style={{paddingTop: '1em'}}>
+                {/*<Checkbox
                   label="Remember me"
                   style={styles.checkRemember.style}
                   labelStyle={styles.checkRemember.labelStyle}
                   iconStyle={styles.checkRemember.iconStyle}
-                />
+                />*/}
+                <FormControlLabel control={<Checkbox name="checkedC" />} label="Remember me" />
 
                 <Link to="/">
-                  <RaisedButton label="Login"
-                                primary={true}
-                                style={styles.loginBtn}/>
+                  {/*<Button
+                      variant="contained"
+                      label="Login"
+                      primary={true}
+                      style={styles.loginBtn}>*/}
+                  <Button
+                      variant="contained"
+                      style={styles.loginBtn}
+                      color='primary' >Login</Button>
                 </Link>
               </div>
             </form>
           </Paper>
 
           <div style={styles.buttonsDiv}>
-            <FlatButton
+            {/* <Button
               label="Register"
               href="/"
               style={styles.flatButton}
               icon={<PersonAdd />}
-            />
+            /> */}
+            <Button
+              style={styles.flatButton}
+              href="/"
+              startIcon={<PersonAdd />}>
+              Register
+            </Button>
 
-            <FlatButton
+            {/*<Button
               label="Forgot Password?"
               href="/"
               style={styles.flatButton}
               icon={<Help />}
-            />
+            />*/}
+            <Button
+              label="Forgot Password?"
+              href="/"
+              style={styles.flatButton}
+              startIcon={<Help />}
+            >
+              Forgot Password?
+            </Button>
           </div>
 
           <div style={styles.buttonsDiv}>
@@ -137,7 +168,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-    </MuiThemeProvider>
+//    </ThemeProvider>
   );
 };
 

@@ -1,7 +1,17 @@
-import React, {PropTypes} from 'react';
-import Paper from 'material-ui/Paper';
+//import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
+//import Paper from 'material-ui/Paper';
+import { Paper } from '@material-ui/core';
+
+/*
 import {white, grey800} from 'material-ui/styles/colors';
 import {typography} from 'material-ui/styles';
+*/
+import { common, grey } from '@material-ui/core/colors';
+//import { typography } from '@material-ui/core/styles';
+
 
 class InfoBox extends React.Component {
 
@@ -16,18 +26,18 @@ class InfoBox extends React.Component {
       },
       number: {
         display: 'block',
-        fontWeight: typography.fontWeightMedium,
+//        fontWeight: typography.fontWeightMedium,
         fontSize: 18,
-        color: grey800
+        color: grey[800]
       },
       text: {
         fontSize: 20,
-        fontWeight: typography.fontWeightLight,
-        color: grey800
+//        fontWeight: typography.fontWeightLight,
+        color: grey[800]
       },
       iconSpan: {
         float: 'left',
-        height: 90,
+        height: 80,
         width: 90,
         textAlign: 'center',
         backgroundColor: color
@@ -44,7 +54,7 @@ class InfoBox extends React.Component {
     return (
       <Paper>
         <span style={styles.iconSpan}>
-          <Icon color={white}
+          <Icon color={common["white"]}
                 style={styles.icon}
           />
         </span>

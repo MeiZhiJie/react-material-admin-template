@@ -1,10 +1,25 @@
 import React from 'react';
+/*
 import {Link} from 'react-router';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentCreate from 'material-ui/svg-icons/content/create';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import {pink500, grey200, grey500} from 'material-ui/styles/colors';
+*/
+
+import { Link } from 'react-router-dom';
+import { Table,
+         TableBody,
+         TableHead,
+         TableCell,
+         TableRow,
+         Fab
+       } from '@material-ui/core';
+import { Create, Add } from '@material-ui/icons';
+import {pink, grey } from '@material-ui/core/colors';
+import Checkbox from '@material-ui/core/Checkbox';
+
 import PageBase from '../components/PageBase';
 import Data from '../data';
 
@@ -20,7 +35,7 @@ const TablePage = () => {
       position: 'fixed',
     },
     editButton: {
-      fill: grey500
+      fill: grey[500]
     },
     columns: {
       id: {
@@ -47,38 +62,37 @@ const TablePage = () => {
 
       <div>
         <Link to="/form" >
-          <FloatingActionButton style={styles.floatingActionButton} backgroundColor={pink500}>
-            <ContentAdd />
-          </FloatingActionButton>
+          <Fab style={{...styles.floatingActionButton, backgroundColor:pink[500]}} >
+            <Add />
+          </Fab>
         </Link>
 
         <Table>
-          <TableHeader>
+          <TableHead>
             <TableRow>
-              <TableHeaderColumn style={styles.columns.id}>ID</TableHeaderColumn>
-              <TableHeaderColumn style={styles.columns.name}>Name</TableHeaderColumn>
-              <TableHeaderColumn style={styles.columns.price}>Price</TableHeaderColumn>
-              <TableHeaderColumn style={styles.columns.category}>Category</TableHeaderColumn>
-              <TableHeaderColumn style={styles.columns.edit}>Edit</TableHeaderColumn>
+              <TableCell padding="checkbox"><Checkbox /></TableCell>
+              <TableCell style={styles.columns.id}>ID</TableCell>
+              <TableCell style={styles.columns.name}>Name</TableCell>
+              <TableCell style={styles.columns.price}>Price</TableCell>
+              <TableCell style={styles.columns.category}>Category</TableCell>
+              <TableCell style={styles.columns.edit}>Edit</TableCell>
             </TableRow>
-          </TableHeader>
+          </TableHead>
           <TableBody>
             {Data.tablePage.items.map(item =>
               <TableRow key={item.id}>
-                <TableRowColumn style={styles.columns.id}>{item.id}</TableRowColumn>
-                <TableRowColumn style={styles.columns.name}>{item.name}</TableRowColumn>
-                <TableRowColumn style={styles.columns.price}>{item.price}</TableRowColumn>
-                <TableRowColumn style={styles.columns.category}>{item.category}</TableRowColumn>
-                <TableRowColumn style={styles.columns.edit}>
+                <TableCell padding="checkbox"><Checkbox /></TableCell>
+                <TableCell style={styles.columns.id}>{item.id}</TableCell>
+                <TableCell style={styles.columns.name}>{item.name}</TableCell>
+                <TableCell style={styles.columns.price}>{item.price}</TableCell>
+                <TableCell style={styles.columns.category}>{item.category}</TableCell>
+                <TableCell style={styles.columns.edit}>
                   <Link className="button" to="/form">
-                    <FloatingActionButton zDepth={0}
-                                          mini={true}
-                                          backgroundColor={grey200}
-                                          iconStyle={styles.editButton}>
-                      <ContentCreate  />
-                    </FloatingActionButton>
+                    <Fab size='small'>
+                      <Create  />
+                    </Fab>
                   </Link>
-                </TableRowColumn>
+                </TableCell>
               </TableRow>
             )}
           </TableBody>

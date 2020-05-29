@@ -1,6 +1,14 @@
-import React, {PropTypes} from 'react';
+//import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+/*
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
+*/
+
+import { Paper, Divider } from '@material-ui/core';
+
+
 import globalStyles from '../styles';
 
 const PageBase = (props) => {
@@ -8,9 +16,9 @@ const PageBase = (props) => {
     const {title, navigation} = props;
 
     return (
+
       <div>
         <span style={globalStyles.navigation}>{navigation}</span>
-
         <Paper style={globalStyles.paper}>
           <h3 style={globalStyles.title}>{title}</h3>
 
@@ -18,7 +26,6 @@ const PageBase = (props) => {
           {props.children}
 
           <div style={globalStyles.clear}/>
-
         </Paper>
       </div>
     );
@@ -29,5 +36,6 @@ PageBase.propTypes = {
   navigation: PropTypes.string,
   children: PropTypes.element
 };
+
 
 export default PageBase;

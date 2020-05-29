@@ -1,10 +1,21 @@
-import React, { PropTypes } from 'react';
-import Paper from 'material-ui/Paper';
+//import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
+//import Paper from 'material-ui/Paper';
+import { Paper, List, ListItem, Avatar } from '@material-ui/core';
+
 import {PieChart, Pie, Cell, ResponsiveContainer} from 'recharts';
-import Avatar from 'material-ui/Avatar';
-import List from 'material-ui/List/List';
-import ListItem from 'material-ui/List/ListItem';
+
+//import Avatar from 'material-ui/Avatar';
+
+
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import { Grid } from '@material-ui/core';
+
 import GlobalStyles from '../../styles';
+
 
 const BrowserUsage = (props) => {
 
@@ -17,20 +28,19 @@ const BrowserUsage = (props) => {
       paddingTop: 20,
     },
     pieChartDiv: {
-      height: 290,
+      height: 302,
       textAlign: 'center'
     }
   };
-
+  
   return (
     <Paper style={styles.paper}>
       <span style={GlobalStyles.title}>Browser Usage</span>
 
       <div style={GlobalStyles.clear}/>
 
-      <div className="row">
-
-        <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+      <Grid container>
+        <Grid item xs={12} sm={8} md={8} lg={8}>
           <div style={styles.pieChartDiv}>
             <ResponsiveContainer>
               <PieChart >
@@ -46,27 +56,26 @@ const BrowserUsage = (props) => {
               </PieChart>
             </ResponsiveContainer>
           </div>
-        </div>
+        </Grid>
 
-        <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <Grid item xs={12} sm={4} md={4} lg={4}>
           <div style={styles.legend}>
             <div style={styles.legend}>
               <List>
                 {props.data.map((item) =>
-                  <ListItem
-                    key={item.name}
-                    leftAvatar={
-                      <Avatar icon={item.icon}
-                              backgroundColor={item.color}/>
-                    }>
-                    {item.name}
+                  <ListItem button>
+                      <ListItemAvatar>
+                          <Avatar style={{backgroundColor:item.color}} >{item.icon}</Avatar>
+                      </ListItemAvatar>
+                      <ListItemText primary={item.name}/>
                   </ListItem>
+                  
                 )}
               </List>
             </div>
           </div>
-        </div>
-      </div>
+        </Grid>
+      </Grid>
     </Paper>
   );
 };
